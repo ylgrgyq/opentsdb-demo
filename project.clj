@@ -7,6 +7,7 @@
                  [clojure-hbase "1.0.0-cdh5.4.7-SNAPSHOT" :exclusions [org.jruby/jruby-complete org.slf4j/slf4j-log4j12]]
                  [org.slf4j/slf4j-log4j12 "1.7.2"]
                  [org.slf4j/slf4j-api "1.7.2"]
+                 [clojurewerkz/buffy "1.0.2"]
                  [environ "0.5.0"]]
   :repositories [["bitwalker.user-agent-utils.mvn.repo" "https://raw.github.com/HaraldWalker/user-agent-utils/mvn-repo/"]
                  ["maven.mei.fm" "http://maven.mei.fm/nexus/content/groups/public/"]]
