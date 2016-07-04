@@ -1,5 +1,6 @@
 (ns opentsdb-demo.tsdb
   (:require [clojure-hbase.core :as hb]
+            [clojure.tools.logging :as logging]
             [clojurewerkz.buffy.core :as bc]
             [clojurewerkz.buffy.frames :as bf]
             [clojurewerkz.buffy.types.protocols :as bp]
@@ -7,7 +8,8 @@
             [opentsdb-demo.buffer :as buffer]
             [opentsdb-demo.util :as u])
   (:import (org.apache.hadoop.hbase.util Bytes)
-           (java.util Arrays)))
+           (java.util Arrays)
+           (org.apache.hadoop.hbase.client Scan ResultScanner)))
 
 (def ^:private TIMESTAMP_BYTES 4)
 (def ^:private MAX_TIME_SPAN_SEC 3600)
@@ -65,5 +67,3 @@
         quilifier (bit-or (bit-shift-left (- timestamp base-time) 4) flag)]
     (hb/with-table [tsdb-table (hb/table TSDB_TABLE_NAME)]
       (hb/put tsdb-table row :values [:t [quilifier value]]))))
-
-
